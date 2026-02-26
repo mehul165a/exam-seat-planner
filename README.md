@@ -1,16 +1,44 @@
-# React + Vite
+# College Exam Seat Planner
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Objective
+Develop and deploy a working application that allocates classrooms for exams using the minimum number of rooms while preferring lower-floor classrooms.
 
-Currently, two official plugins are available:
+## Tech Stack
+- React (Vite)
+- Tailwind CSS
+- JavaScript (ES6)
+- Deployed on Vercel
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
 
-## React Compiler
+## Features
+- Add classroom with validation
+- View all classrooms
+- Allocate exam seats using greedy optimization
+- Prefers lower-floor classrooms
+- Minimizes number of rooms used
+- Displays allocated classrooms
+- Handles insufficient capacity cases
+- Proper input validation and error handling
 
-The React Compiler is currently not compatible with SWC. See [this issue](https://github.com/vitejs/vite-plugin-react/issues/428) for tracking the progress.
 
-## Expanding the ESLint configuration
+## Greedy Allocation Approach
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+1. Classrooms are sorted by:
+   - Floor number (ascending)
+   - Capacity (descending within same floor)
+
+2. Rooms are selected until total capacity >= total students.
+
+3. If total capacity is insufficient:
+   - Displays: "Not enough seats available"
+
+This ensures:
+- Minimum number of rooms
+- Lower floors preferred first
+
+
+## How to Run Locally
+
+```bash
+npm install
+npm run dev
